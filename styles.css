@@ -1,0 +1,203 @@
+/* =========================================================
+   ESTILOS GENERALES - ELECTROMEGA
+   ========================================================= */
+:root {
+  --color-negro: #000;
+  --color-verde: #00b35a;
+  --color-verde-claro: #00ff66;
+  --color-blanco: #fff;
+  --color-gris-fondo: #f5f5f5;
+  --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transicion: all 0.3s ease;
+  --fuente-principal: 'Poppins', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  background-color: var(--color-gris-fondo);
+  color: var(--color-negro);
+  line-height: 1.6;
+}
+
+/* =========================================================
+   CABECERA
+   ========================================================= */
+.encabezado {
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
+  padding: 2.5rem 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.nombre-tienda {
+  color: var(--color-verde-claro);
+  font-size: 3rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.eslogan {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-blanco);
+  opacity: 0.9;
+}
+
+/* =========================================================
+   SECCIÓN CATÁLOGO
+   ========================================================= */
+.catalogo {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.titulo-seccion {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-negro);
+}
+
+.subtitulo {
+  text-align: center;
+  color: #555;
+  margin-bottom: 2.5rem;
+}
+
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+}
+
+/* =========================================================
+   TARJETAS DE PRODUCTOS
+   ========================================================= */
+.producto {
+  background-color: var(--color-blanco);
+  border-radius: 12px;
+  box-shadow: var(--sombra-suave);
+  overflow: hidden;
+  transition: var(--transicion);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+}
+
+.producto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen del producto */
+.imagen-producto img {
+  width: 100%;
+  height: 230px;
+  object-fit: contain;
+  background-color: #fff;
+  transition: var(--transicion);
+}
+
+.producto:hover .imagen-producto img {
+  transform: scale(1.05);
+}
+
+/* Información del producto */
+.info-producto {
+  padding: 1.2rem 1.3rem 1.6rem;
+}
+
+.marca {
+  color: var(--color-verde);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.modelo {
+  font-size: 1.2rem;
+  margin: 0.4rem 0;
+  font-weight: 600;
+}
+
+.descripcion {
+  font-size: 0.9rem;
+  color: #555;
+  min-height: 60px;
+}
+
+.precio {
+  margin-top: 0.8rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-negro);
+}
+
+/* =========================================================
+   PIE DE PÁGINA
+   ========================================================= */
+.pie-pagina {
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   ANIMACIONES BÁSICAS
+   ========================================================= */
+.producto {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.producto.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+@media (max-width: 768px) {
+  .nombre-tienda {
+    font-size: 2.2rem;
+  }
+
+  .titulo-seccion {
+    font-size: 1.7rem;
+  }
+
+  .descripcion {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .encabezado {
+    padding: 2rem 1rem;
+  }
+
+  .nombre-tienda {
+    font-size: 2rem;
+  }
+
+  .grid-productos {
+    gap: 1.2rem;
+  }
+}
