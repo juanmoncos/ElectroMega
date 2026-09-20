@@ -56,7 +56,8 @@ body {
 
 .logo img {
   height: 42px;
-  border-radius: 10px;
+  width: auto;
+  display: block;
 }
 
 /* BUSCADOR (sobre fondo oscuro) */
@@ -645,16 +646,22 @@ body {
 @media (max-width: 480px) {
 
   .header-superior {
-    padding: 0.7rem 0.8rem;
+    padding: 0.6rem 0.9rem;
   }
 
   .logo img {
-    height: 32px;
+    height: 30px;
+  }
+
+  .btn-menu-movil {
+    width: 34px;
+    height: 34px;
   }
 
   .barra-superior {
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     gap: 0.5rem;
     flex-wrap: wrap;
   }
@@ -664,21 +671,32 @@ body {
     flex: 1 1 100%;
     max-width: 100%;
     width: 100%;
-    height: 38px;
-    margin-top: 0.6rem;
+    height: 40px;
+    margin-top: 0.65rem;
   }
 
   .contenedor-busqueda input {
     height: 100%;
-    padding-left: 1rem;
-    padding-right: 2.8rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
+    padding-left: 0.9rem;
+    padding-right: 2.6rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+  }
+
+  .contenedor-busqueda input::placeholder {
+    font-size: 0.8rem;
   }
 
   .btn-buscar {
-    height: 32px;
-    width: 32px;
+    height: 30px;
+    width: 30px;
+    right: 5px;
+    border-radius: 8px;
+  }
+
+  .btn-buscar svg {
+    width: 15px;
+    height: 15px;
   }
 
   .hero-stats {
