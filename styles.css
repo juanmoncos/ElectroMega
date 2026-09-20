@@ -2,7 +2,7 @@
    ESTILOS GENERALES - ELECTROMEGA
    ========================================================= */
 :root {
-  --color-negro: #0a0e12;         /* fondo header / hero / footer */
+  --color-negro: #000000;         /* fondo header / hero / footer */
   --color-negro-suave: #10151b;
   --color-verde: #00c853;         /* verde principal de marca */
   --color-verde-oscuro: #067a3a;
