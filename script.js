@@ -4,10 +4,11 @@
    Estructura:
    1. Datos de productos (fácil de mantener y ampliar)
    2. Configuración de categorías
-   3. Renderizado de tarjetas (a partir de un <template>)
-   4. Menú de categorías + menú móvil
-   5. Buscador (con debounce)
-   6. Animación de aparición al hacer scroll (IntersectionObserver)
+   3. Iconos (SVG en línea, sin depender de archivos externos)
+   4. Renderizado de tarjetas (a partir de un <template>)
+   5. Menú de categorías + menú móvil
+   6. Buscador (con debounce)
+   7. Animación de aparición al hacer scroll (IntersectionObserver)
    ========================================================= */
 
 /* =========================================================
@@ -179,19 +180,31 @@ const CATEGORIAS = {
   }
 };
 
-const ORDEN_CATEGORIAS = ["celulares", "accesorios", "electrodomesticos"];
-
 /* Estado actual de la vista */
 let categoriaActiva = "celulares";
 let textoBusquedaActual = "";
 
 /* =========================================================
-   3. RENDERIZADO
+   3. ICONOS (SVG en línea — no dependen de archivos icons/*.png)
+   ========================================================= */
+const ICONOS_SVG = {
+  camara: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h2.5l1.5-2h8l1.5 2H20a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.3"/></svg>`,
+  video: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5 21 7v10l-5-3.5"/></svg>`,
+  almacenamiento: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><line x1="7" y1="7.5" x2="7.01" y2="7.5"/><line x1="7" y1="16.5" x2="7.01" y2="16.5"/></svg>`,
+  ram: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="10" rx="1.5"/><line x1="8" y1="7" x2="8" y2="4"/><line x1="12" y1="7" x2="12" y2="4"/><line x1="16" y1="7" x2="16" y2="4"/><line x1="8" y1="20" x2="8" y2="17"/><line x1="16" y1="20" x2="16" y2="17"/></svg>`,
+  procesador: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><rect x="10" y="10" width="4" height="4"/><line x1="9" y1="2" x2="9" y2="5"/><line x1="15" y1="2" x2="15" y2="5"/><line x1="9" y1="19" x2="9" y2="22"/><line x1="15" y1="19" x2="15" y2="22"/><line x1="2" y1="9" x2="5" y2="9"/><line x1="2" y1="15" x2="5" y2="15"/><line x1="19" y1="9" x2="22" y2="9"/><line x1="19" y1="15" x2="22" y2="15"/></svg>`,
+  pantalla: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><line x1="11" y1="18.3" x2="13" y2="18.3"/></svg>`,
+  bateria: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7" width="16" height="10" rx="1.8"/><line x1="21.5" y1="10.5" x2="21.5" y2="13.5"/><line x1="6" y1="11" x2="6" y2="13"/><line x1="9" y1="11" x2="9" y2="13"/></svg>`
+};
+
+/* =========================================================
+   4. RENDERIZADO
    ========================================================= */
 const contenedorGrid = document.getElementById("grid-productos");
 const plantillaProducto = document.getElementById("plantilla-producto");
 const tituloSeccionEl = document.getElementById("titulo-seccion");
 const subtituloEl = document.getElementById("subtitulo-seccion");
+const contadorEl = document.getElementById("contador-productos");
 const estadoVacioEl = document.getElementById("estado-vacio");
 const mensajeVacioEl = document.getElementById("mensaje-vacio");
 
@@ -208,6 +221,8 @@ const observerAparicion = new IntersectionObserver((entradas) => {
 function crearTarjeta(producto) {
   const nodo = plantillaProducto.content.firstElementChild.cloneNode(true);
 
+  nodo.querySelector(".badge-marca").textContent = producto.marca;
+
   const img = nodo.querySelector(".imagen-producto img");
   img.src = producto.imagen;
   img.alt = `${producto.marca} ${producto.modelo}`;
@@ -219,24 +234,20 @@ function crearTarjeta(producto) {
   nodo.querySelector(".precio").textContent = producto.precio;
 
   const filas = [
-    ["icons/camara.png", producto.camara],
-    ["icons/camara-web.png", producto.camaraFrontal],
-    ["icons/tarjeta-de-memoria.png", producto.almacenamiento],
-    ["icons/ram.png", producto.ram],
-    ["icons/procesador.png", producto.procesador],
-    ["icons/mostrar.png", producto.pantalla],
-    ["icons/bateria.png", producto.bateria]
+    ["camara", producto.camara],
+    ["video", producto.camaraFrontal],
+    ["almacenamiento", producto.almacenamiento],
+    ["ram", producto.ram],
+    ["procesador", producto.procesador],
+    ["pantalla", producto.pantalla],
+    ["bateria", producto.bateria]
   ];
 
   const lista = nodo.querySelector(".caracteristicas");
-  filas.forEach(([icono, texto]) => {
+  filas.forEach(([tipo, texto]) => {
     if (!texto) return; // permite dejar campos vacíos sin romper el diseño
     const li = document.createElement("li");
-    const imgIcono = document.createElement("img");
-    imgIcono.src = icono;
-    imgIcono.alt = "";
-    imgIcono.loading = "lazy";
-    li.appendChild(imgIcono);
+    li.innerHTML = ICONOS_SVG[tipo];
     li.append(" " + texto);
     lista.appendChild(li);
   });
@@ -254,6 +265,10 @@ function renderizar() {
   const productosFiltrados = texto
     ? productosCategoria.filter(p => `${p.marca} ${p.modelo}`.toLowerCase().includes(texto))
     : productosCategoria;
+
+  contadorEl.textContent = productosFiltrados.length > 0
+    ? `${productosFiltrados.length} producto${productosFiltrados.length === 1 ? "" : "s"}`
+    : "";
 
   // Limpia el grid de forma eficiente
   contenedorGrid.innerHTML = "";
@@ -273,8 +288,7 @@ function renderizar() {
   // Se arma todo en un fragmento y se inserta una sola vez (evita reflow por tarjeta)
   const fragmento = document.createDocumentFragment();
   productosFiltrados.forEach(producto => {
-    const tarjeta = crearTarjeta(producto);
-    fragmento.appendChild(tarjeta);
+    fragmento.appendChild(crearTarjeta(producto));
   });
   contenedorGrid.appendChild(fragmento);
 
@@ -285,7 +299,7 @@ function renderizar() {
 }
 
 /* =========================================================
-   4. MENÚ DE CATEGORÍAS + MENÚ MÓVIL
+   5. MENÚ DE CATEGORÍAS + MENÚ MÓVIL
    ========================================================= */
 const botonesMenu = document.querySelectorAll(".menu-categorias [data-categoria]");
 const botonHamburguesa = document.getElementById("btn-menu-movil");
@@ -307,11 +321,13 @@ function activarCategoria(categoria) {
 
   renderizar();
   cerrarMenuMovil();
-  document.getElementById("catalogo").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 botonesMenu.forEach(boton => {
-  boton.addEventListener("click", () => activarCategoria(boton.dataset.categoria));
+  boton.addEventListener("click", () => {
+    activarCategoria(boton.dataset.categoria);
+    menuCategorias.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 });
 
 function cerrarMenuMovil() {
@@ -322,10 +338,11 @@ function cerrarMenuMovil() {
 botonHamburguesa?.addEventListener("click", () => {
   const abierto = menuCategorias.classList.toggle("abierto");
   botonHamburguesa.setAttribute("aria-expanded", String(abierto));
+  if (abierto) menuCategorias.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
 /* =========================================================
-   5. BUSCADOR (con debounce para no filtrar en cada tecla)
+   6. BUSCADOR (con debounce para no filtrar en cada tecla)
    ========================================================= */
 const inputBuscador = document.getElementById("buscador");
 const btnBuscar = document.getElementById("btnBuscar");
@@ -351,7 +368,7 @@ inputBuscador?.addEventListener("keypress", (e) => {
 });
 
 /* =========================================================
-   6. DESPLAZAMIENTO SUAVE PARA ENLACES INTERNOS
+   7. DESPLAZAMIENTO SUAVE PARA ENLACES INTERNOS (ej. "Ver catálogo")
    ========================================================= */
 document.querySelectorAll('a[href^="#"]').forEach(ancla => {
   ancla.addEventListener('click', e => {
@@ -362,8 +379,21 @@ document.querySelectorAll('a[href^="#"]').forEach(ancla => {
 });
 
 /* =========================================================
+   8. ESTADÍSTICAS DEL HERO (se calculan solas: nunca quedan
+      desactualizadas aunque agregues o quites productos)
+   ========================================================= */
+function actualizarEstadisticasHero() {
+  const marcasUnicas = new Set(PRODUCTOS.map(p => p.marca));
+  const statMarcas = document.getElementById("stat-marcas");
+  const statModelos = document.getElementById("stat-modelos");
+  if (statMarcas) statMarcas.textContent = marcasUnicas.size;
+  if (statModelos) statModelos.textContent = PRODUCTOS.length;
+}
+
+/* =========================================================
    INICIO
    ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
+  actualizarEstadisticasHero();
   activarCategoria("celulares");
 });

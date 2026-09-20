@@ -20,7 +20,6 @@
 <body>
   <!-- ===================== CABECERA ===================== -->
   <header class="header-superior">
-
     <div class="barra-superior">
 
       <!-- LOGO -->
@@ -31,8 +30,11 @@
       <!-- BARRA DE BÚSQUEDA -->
       <div class="contenedor-busqueda">
         <input type="text" id="buscador" placeholder="Buscar por marca o referencia">
-        <button class="btn-buscar" id="btnBuscar" type="button">
-          <img src="icons/buscar.png" alt="Buscar">
+        <button class="btn-buscar" id="btnBuscar" type="button" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
         </button>
       </div>
 
@@ -42,21 +44,29 @@
       </button>
 
     </div>
-
-    <!-- MENÚ DE CATEGORÍAS -->
-    <nav class="menu-categorias" id="menu-categorias" aria-label="Categorías de productos">
-      <button type="button" class="activo" data-categoria="celulares" aria-current="page">Celulares</button>
-      <button type="button" data-categoria="accesorios">Accesorios</button>
-      <button type="button" data-categoria="electrodomesticos">Electrodomésticos</button>
-    </nav>
-
-    <!-- BANNER PRINCIPAL -->
-    <div class="banner-principal">
-      <img src="logo/banner.png" alt="Banner ElectroMega" loading="eager" fetchpriority="high">
-    </div>
-
   </header>
 
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero-contenido">
+      <span class="hero-badge">Catálogo oficial ElectroMega</span>
+      <h1 class="hero-titulo">Los mejores productos, <span>al mejor precio</span></h1>
+      <p class="hero-subtitulo">Celulares, accesorios y electrodomésticos de las mejores marcas, con garantía y asesoría experta.</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span id="stat-marcas">0</span>
+          <small>Marcas</small>
+        </div>
+        <div class="hero-stat">
+          <span id="stat-modelos">0</span>
+          <small>Productos</small>
+        </div>
+      </div>
+
+      <a href="#catalogo" class="hero-cta">Ver catálogo <span aria-hidden="true">↓</span></a>
+    </div>
+  </section>
 
   <!-- ===================== CATÁLOGO ===================== -->
   <main>
@@ -64,11 +74,23 @@
       <h2 class="titulo-seccion" id="titulo-seccion">Catálogo de Celulares</h2>
       <p class="subtitulo" id="subtitulo-seccion">Explora nuestra selección de las mejores marcas del mercado</p>
 
+      <!-- MENÚ DE CATEGORÍAS -->
+      <nav class="menu-categorias" id="menu-categorias" aria-label="Categorías de productos">
+        <button type="button" class="activo" data-categoria="celulares" aria-current="page">Celulares</button>
+        <button type="button" data-categoria="accesorios">Accesorios</button>
+        <button type="button" data-categoria="electrodomesticos">Electrodomésticos</button>
+      </nav>
+
+      <p class="contador-productos" id="contador-productos"></p>
+
       <div class="grid-productos" id="grid-productos"></div>
 
       <!-- ESTADO VACÍO (categoría sin productos aún, o búsqueda sin resultados) -->
       <div class="estado-vacio" id="estado-vacio" hidden>
-        <img src="icons/buscar.png" alt="" class="estado-vacio-icono">
+        <svg class="estado-vacio-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
         <p id="mensaje-vacio">Aún no hay productos cargados en esta categoría.</p>
       </div>
 
@@ -86,6 +108,7 @@
   <template id="plantilla-producto">
     <article class="producto">
       <figure class="imagen-producto">
+        <span class="badge-marca"></span>
         <img src="" alt="">
       </figure>
       <div class="info-producto">
