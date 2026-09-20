@@ -182,7 +182,14 @@ const CATEGORIAS = {
 
 /* Estado actual de la vista */
 let categoriaActiva = "celulares";
+let marcaActiva = "todas";
+let ordenActual = "relevancia";
 let textoBusquedaActual = "";
+
+/* Convierte "$1.899.000 COP" en 1899000 para poder ordenar por precio */
+function precioNumero(precioTexto) {
+  return parseInt(String(precioTexto).replace(/[^\d]/g, ""), 10) || 0;
+}
 
 /* =========================================================
    3. ICONOS (SVG en línea — no dependen de archivos icons/*.png)
@@ -207,6 +214,9 @@ const subtituloEl = document.getElementById("subtitulo-seccion");
 const contadorEl = document.getElementById("contador-productos");
 const estadoVacioEl = document.getElementById("estado-vacio");
 const mensajeVacioEl = document.getElementById("mensaje-vacio");
+const menuMarcasEl = document.getElementById("menu-marcas");
+const filaResultadosEl = document.querySelector(".fila-resultados");
+const ordenSelect = document.getElementById("orden-select");
 
 // Un único observer reutilizado para todas las tarjetas (mejor que un listener de scroll)
 const observerAparicion = new IntersectionObserver((entradas) => {
@@ -255,16 +265,76 @@ function crearTarjeta(producto) {
   return nodo;
 }
 
+/* Genera las píldoras de marca según los productos de la categoría activa.
+   Si la categoría no tiene productos todavía, se oculta esta fila completa. */
+function renderizarMarcas() {
+  const productosCategoria = PRODUCTOS.filter(p => p.categoria === categoriaActiva);
+  const marcas = [...new Set(productosCategoria.map(p => p.marca))];
+
+  if (marcas.length === 0) {
+    menuMarcasEl.hidden = true;
+    menuMarcasEl.innerHTML = "";
+    if (filaResultadosEl) filaResultadosEl.hidden = true;
+    return;
+  }
+
+  menuMarcasEl.hidden = false;
+  if (filaResultadosEl) filaResultadosEl.hidden = false;
+  menuMarcasEl.innerHTML = "";
+
+  const botonTodos = document.createElement("button");
+  botonTodos.type = "button";
+  botonTodos.textContent = "Todos";
+  botonTodos.dataset.marca = "todas";
+  botonTodos.className = marcaActiva === "todas" ? "activo" : "";
+  menuMarcasEl.appendChild(botonTodos);
+
+  marcas.forEach(marca => {
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.textContent = marca;
+    boton.dataset.marca = marca;
+    boton.className = marcaActiva === marca ? "activo" : "";
+    menuMarcasEl.appendChild(boton);
+  });
+}
+
+menuMarcasEl?.addEventListener("click", (e) => {
+  const boton = e.target.closest("button[data-marca]");
+  if (!boton) return;
+  marcaActiva = boton.dataset.marca;
+  menuMarcasEl.querySelectorAll("button").forEach(b => {
+    b.classList.toggle("activo", b.dataset.marca === marcaActiva);
+  });
+  renderizar();
+});
+
+ordenSelect?.addEventListener("change", () => {
+  ordenActual = ordenSelect.value;
+  renderizar();
+});
+
 function renderizar() {
   const config = CATEGORIAS[categoriaActiva];
   tituloSeccionEl.textContent = config.tituloSeccion;
   subtituloEl.textContent = config.subtitulo;
 
   const texto = textoBusquedaActual.toLowerCase().trim();
-  const productosCategoria = PRODUCTOS.filter(p => p.categoria === categoriaActiva);
-  const productosFiltrados = texto
-    ? productosCategoria.filter(p => `${p.marca} ${p.modelo}`.toLowerCase().includes(texto))
-    : productosCategoria;
+  let productosFiltrados = PRODUCTOS.filter(p => p.categoria === categoriaActiva);
+
+  if (marcaActiva !== "todas") {
+    productosFiltrados = productosFiltrados.filter(p => p.marca === marcaActiva);
+  }
+
+  if (texto) {
+    productosFiltrados = productosFiltrados.filter(p => `${p.marca} ${p.modelo}`.toLowerCase().includes(texto));
+  }
+
+  if (ordenActual === "precio-asc") {
+    productosFiltrados = [...productosFiltrados].sort((a, b) => precioNumero(a.precio) - precioNumero(b.precio));
+  } else if (ordenActual === "precio-desc") {
+    productosFiltrados = [...productosFiltrados].sort((a, b) => precioNumero(b.precio) - precioNumero(a.precio));
+  }
 
   contadorEl.textContent = productosFiltrados.length > 0
     ? `${productosFiltrados.length} producto${productosFiltrados.length === 1 ? "" : "s"}`
@@ -315,10 +385,14 @@ function activarCategoria(categoria) {
     boton.setAttribute("aria-current", esActivo ? "page" : "false");
   });
 
-  // Al cambiar de categoría, se limpia la búsqueda para partir de cero
+  // Al cambiar de categoría, se limpian filtros y búsqueda para partir de cero
   if (inputBuscador) inputBuscador.value = "";
   textoBusquedaActual = "";
+  marcaActiva = "todas";
+  ordenActual = "relevancia";
+  if (ordenSelect) ordenSelect.value = "relevancia";
 
+  renderizarMarcas();
   renderizar();
   cerrarMenuMovil();
 }

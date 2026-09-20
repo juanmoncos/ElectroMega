@@ -81,7 +81,26 @@
         <button type="button" data-categoria="electrodomesticos">Electrodomésticos</button>
       </nav>
 
-      <p class="contador-productos" id="contador-productos"></p>
+      <!-- FILTRO POR MARCA (se genera solo según la categoría activa) -->
+      <nav class="menu-marcas" id="menu-marcas" aria-label="Filtrar por marca"></nav>
+
+      <div class="fila-resultados">
+        <p class="contador-productos" id="contador-productos"></p>
+
+        <label class="orden-productos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 4v14"></path>
+            <path d="M4 15l4 4 4-4"></path>
+            <path d="M16 20V6"></path>
+            <path d="M20 9l-4-4-4 4"></path>
+          </svg>
+          <select id="orden-select" aria-label="Ordenar productos">
+            <option value="relevancia">Relevancia</option>
+            <option value="precio-asc">Precio: menor a mayor</option>
+            <option value="precio-desc">Precio: mayor a menor</option>
+          </select>
+        </label>
+      </div>
 
       <div class="grid-productos" id="grid-productos"></div>
 
