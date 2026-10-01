@@ -238,13 +238,15 @@ function crearTarjeta(producto) {
   img.decoding = "async";
 
   nodo.querySelector(".marca").textContent = producto.marca;
-  nodo.querySelector(".modelo").textContent = producto.modelo;
-  nodo.querySelector(".precio").textContent = producto.precio;
+  // El almacenamiento se muestra junto al modelo (ej. "Galaxy A07 - 64GB")
+  // en vez de repetirse abajo en la lista de características.
+  nodo.querySelector(".modelo").textContent = producto.almacenamiento
+    ? `${producto.modelo} - ${producto.almacenamiento}`
+    : producto.modelo;
 
   const filas = [
     ["camara", producto.camara],
     ["video", producto.camaraFrontal],
-    ["almacenamiento", producto.almacenamiento],
     ["ram", producto.ram],
     ["procesador", producto.procesador],
     ["pantalla", producto.pantalla],
@@ -260,8 +262,43 @@ function crearTarjeta(producto) {
     lista.appendChild(li);
   });
 
+  // Precio y cuota inicial: ocultos por defecto, se revelan al hacer clic
+  // en la tarjeta (ver listener delegado más abajo). "cuotaInicial" es
+  // opcional: si el producto todavía no la tiene cargada, esa línea no se muestra.
+  nodo.querySelector(".overlay-contado").innerHTML =
+    `<small>Valor de contado</small>${producto.precio}`;
+
+  const cuotaEl = nodo.querySelector(".overlay-cuota");
+  if (producto.cuotaInicial) {
+    cuotaEl.innerHTML = `<small>Cuota inicial</small>${producto.cuotaInicial}`;
+    cuotaEl.hidden = false;
+  } else {
+    cuotaEl.hidden = true;
+  }
+
   return nodo;
 }
+
+/* Clic (o Enter/Espacio) sobre una tarjeta: atenúa la imagen y revela el
+   precio de contado y la cuota inicial. Un solo listener delegado en el
+   contenedor, en vez de uno por tarjeta. */
+function alternarPrecioTarjeta(tarjeta) {
+  const mostrar = tarjeta.classList.toggle("mostrar-precio");
+  tarjeta.setAttribute("aria-pressed", String(mostrar));
+}
+
+contenedorGrid.addEventListener("click", (e) => {
+  const tarjeta = e.target.closest(".producto");
+  if (tarjeta) alternarPrecioTarjeta(tarjeta);
+});
+
+contenedorGrid.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter" && e.key !== " ") return;
+  const tarjeta = e.target.closest(".producto");
+  if (!tarjeta) return;
+  e.preventDefault();
+  alternarPrecioTarjeta(tarjeta);
+});
 
 /* Genera las píldoras de marca según los productos de la categoría activa.
    Si la categoría no tiene productos todavía, se oculta esta fila completa. */

@@ -140,16 +140,19 @@
        El JS clona esto por cada producto; así el HTML no tiene que repetirse
        para cada celular, accesorio o electrodoméstico. -->
   <template id="plantilla-producto">
-    <article class="producto">
+    <article class="producto" tabindex="0" role="button" aria-pressed="false">
       <figure class="imagen-producto">
         <span class="badge-marca"></span>
         <img src="" alt="">
+        <div class="overlay-precio">
+          <p class="overlay-contado"></p>
+          <p class="overlay-cuota" hidden></p>
+        </div>
       </figure>
       <div class="info-producto">
         <h3 class="marca"></h3>
         <h4 class="modelo"></h4>
         <ul class="caracteristicas"></ul>
-        <p class="precio"></p>
       </div>
     </article>
   </template>

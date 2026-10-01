@@ -462,6 +462,11 @@ body {
   border-color: var(--color-verde);
 }
 
+.producto:focus-visible {
+  outline: 2px solid var(--color-verde);
+  outline-offset: 2px;
+}
+
 /* Imagen del producto */
 .imagen-producto {
   position: relative;
@@ -543,11 +548,61 @@ body {
   color: var(--color-verde);
 }
 
-.precio {
-  margin-top: 0.8rem;
+/* =========================================================
+   SUPERPOSICIÓN DE PRECIO (al hacer clic en la tarjeta)
+   ========================================================= */
+.overlay-precio {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 2;
+}
+
+.producto.mostrar-precio .overlay-precio {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.producto.mostrar-precio .imagen-producto img {
+  transform: scale(1.05);
+}
+
+.overlay-contado {
+  color: var(--color-blanco);
+  font-size: 1.3rem;
   font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--color-negro);
+  line-height: 1.3;
+}
+
+.overlay-contado small,
+.overlay-cuota small {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-verde-claro);
+  margin-bottom: 0.2rem;
+}
+
+.overlay-cuota {
+  color: var(--color-verde-claro);
+  font-size: 1.05rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(52, 232, 158, 0.4);
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
 }
 
 /* =========================================================
