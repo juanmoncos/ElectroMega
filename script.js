@@ -46,6 +46,70 @@ const PRODUCTOS = [
     camara: "Cuádruple, 200MP + 50MP + 50MP + 10MP", camaraFrontal: "12MP", almacenamiento: "256GB",
     ram: "12GB RAM", procesador: "Snapdragon 8 Elite Gen 5 for Galaxy", pantalla: "6.9\" Dynamic AMOLED 2X, 120Hz", bateria: "5000 mAh, 60W", precio: "Precio pendiente" },
 
+  // ---------- Apple ----------
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 12", imagen: "imagenes/iphone-12.jpg",
+    camara: "Doble, 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
+    ram: "4GB RAM", procesador: "Apple A14 Bionic", pantalla: "6.1\" OLED", bateria: "2815 mAh", precio: "Precio pendiente",
+    cuotaInicial: "$310.000 no reportado<br>$465.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 13", imagen: "imagenes/iphone-13.jpg",
+    camara: "Doble, 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
+    ram: "4GB RAM", procesador: "Apple A15 Bionic", pantalla: "6.1\" OLED", bateria: "3240 mAh", precio: "$1.350.000 COP",
+    cuotaInicial: "$370.000 no reportado<br>$555.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 13 (Nuevo)", imagen: "imagenes/iphone-13.jpg",
+    camara: "Doble, 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
+    ram: "4GB RAM", procesador: "Apple A15 Bionic", pantalla: "6.1\" OLED", bateria: "3240 mAh", precio: "Precio pendiente",
+    cuotaInicial: "$440.000 no reportado<br>$660.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 13 Pro Max", imagen: "imagenes/iphone-13-pro-max.jpg",
+    camara: "Triple, 12MP + 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
+    ram: "6GB RAM", procesador: "Apple A15 Bionic", pantalla: "6.7\" OLED, 120Hz ProMotion", bateria: "4352 mAh", precio: "Precio pendiente",
+    cuotaInicial: "$500.000 no reportado<br>$750.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 13 Pro Max", imagen: "imagenes/iphone-13-pro-max.jpg",
+    camara: "Triple, 12MP + 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "256GB",
+    ram: "6GB RAM", procesador: "Apple A15 Bionic", pantalla: "6.7\" OLED, 120Hz ProMotion", bateria: "4352 mAh", precio: "$2.300.000 COP",
+    cuotaInicial: "$540.000 no reportado<br>$810.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 14 Pro Max (Nuevo)", imagen: "imagenes/iphone-14-pro-max.jpg",
+    camara: "Triple, 48MP + 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
+    ram: "6GB RAM", procesador: "Apple A16 Bionic", pantalla: "6.7\" OLED, 120Hz ProMotion", bateria: "4323 mAh", precio: "$2.950.000 COP",
+    cuotaInicial: "$700.000 no reportado<br>$1.050.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 15", imagen: "imagenes/iphone-15.jpg",
+    camara: "Doble, 48MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
+    ram: "6GB RAM", procesador: "Apple A16 Bionic", pantalla: "6.1\" OLED", bateria: "3349 mAh", precio: "$1.950.000 COP",
+    cuotaInicial: "$490.000 no reportado<br>$735.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 15 Pro", imagen: "imagenes/iphone-15-pro.jpg",
+    camara: "Triple, 48MP + 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "256GB",
+    ram: "8GB RAM", procesador: "Apple A17 Pro", pantalla: "6.1\" OLED, 120Hz ProMotion", bateria: "3274 mAh", precio: "Precio pendiente",
+    cuotaInicial: "$610.000 no reportado<br>$915.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 15 Pro Max", imagen: "imagenes/iphone-15-pro-max.jpg",
+    camara: "Triple, 48MP + 12MP + 12MP (zoom óptico 5x)", camaraFrontal: "12MP", almacenamiento: "256GB",
+    ram: "8GB RAM", procesador: "Apple A17 Pro", pantalla: "6.7\" OLED, 120Hz ProMotion", bateria: "4441 mAh", precio: "$2.720.000 COP",
+    cuotaInicial: "$720.000 no reportado<br>$1.080.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 15 Pro Max", imagen: "imagenes/iphone-15-pro-max.jpg",
+    camara: "Triple, 48MP + 12MP + 12MP (zoom óptico 5x)", camaraFrontal: "12MP", almacenamiento: "512GB",
+    ram: "8GB RAM", procesador: "Apple A17 Pro", pantalla: "6.7\" OLED, 120Hz ProMotion", bateria: "4441 mAh", precio: "Precio pendiente" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 16 (Nuevo)", imagen: "imagenes/iphone-16.jpg",
+    camara: "Doble, 48MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
+    ram: "8GB RAM", procesador: "Apple A18", pantalla: "6.1\" OLED", bateria: "3561 mAh", precio: "Precio pendiente",
+    cuotaInicial: "$720.000 no reportado<br>$1.080.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 16", imagen: "imagenes/iphone-16.jpg",
+    camara: "Doble, 48MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
+    ram: "8GB RAM", procesador: "Apple A18", pantalla: "6.1\" OLED", bateria: "3561 mAh", precio: "$2.450.000 COP",
+    cuotaInicial: "$650.000 no reportado<br>$975.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 16 Pro", imagen: "imagenes/iphone-16-pro.jpg",
+    camara: "Triple, 48MP + 48MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
+    ram: "8GB RAM", procesador: "Apple A18 Pro", pantalla: "6.3\" OLED, 120Hz ProMotion", bateria: "3582 mAh", precio: "Precio pendiente",
+    cuotaInicial: "$730.000 no reportado<br>$1.095.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 16 Pro Max", imagen: "imagenes/iphone-16-pro-max.jpg",
+    camara: "Triple, 48MP + 48MP + 12MP", camaraFrontal: "12MP", almacenamiento: "256GB",
+    ram: "8GB RAM", procesador: "Apple A18 Pro", pantalla: "6.9\" OLED, 120Hz ProMotion", bateria: "4685 mAh", precio: "$3.480.000 COP",
+    cuotaInicial: "$960.000 no reportado<br>$1.440.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 17", imagen: "imagenes/iphone-17.jpg",
+    camara: "Doble, 48MP + 48MP", camaraFrontal: "18MP", almacenamiento: "256GB",
+    ram: "8GB RAM", procesador: "Apple A19", pantalla: "6.3\" OLED, 120Hz ProMotion", bateria: "3692 mAh", precio: "$3.100.000 COP",
+    cuotaInicial: "$910.000 no reportado<br>$1.365.000 reportado" },
+  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 17 Pro Max", imagen: "imagenes/iphone-17-pro-max.jpg",
+    camara: "Triple, 48MP + 48MP + 12MP", camaraFrontal: "18MP", almacenamiento: "256GB",
+    ram: "12GB RAM", procesador: "Apple A19 Pro", pantalla: "6.9\" OLED, 120Hz ProMotion", bateria: "5088 mAh", precio: "Precio pendiente" },
+
   // ---------- Xiaomi ----------
   { categoria: "celulares", marca: "Xiaomi", modelo: "Redmi A7 Pro", imagen: "imagenes/xiaomi-redmi-a7-pro.jpg",
     camara: "Única, 13MP", camaraFrontal: "8MP", almacenamiento: "64GB",
@@ -98,10 +162,13 @@ const PRODUCTOS = [
     camara: "Dual, 50MP + 8MP", camaraFrontal: "32MP", almacenamiento: "256GB",
     ram: "8GB RAM", procesador: "Snapdragon 6s Gen 3", pantalla: "6.67\" OLED, 120Hz", bateria: "5000 mAh, 33W", precio: "Precio pendiente" },
 
-  // ---------- ZTE ----------
-  { categoria: "celulares", marca: "ZTE", modelo: "Blade A35e", imagen: "imagenes/zte-blade-a35e.jpg",
-    camara: "Única, 8MP", camaraFrontal: "5MP", almacenamiento: "64GB",
-    ram: "2GB RAM", procesador: "Unisoc SC9863A", pantalla: "6.52\", 90Hz", bateria: "5000 mAh", precio: "$290.000 COP" },
+  // ---------- Infinix ----------
+  { categoria: "celulares", marca: "Infinix", modelo: "Note 60 Pro 5G", imagen: "imagenes/infinix-note-60-pro-5g.jpg",
+    camara: "Dual, 50MP + 8MP, OIS", camaraFrontal: "13MP", almacenamiento: "256GB",
+    ram: "8GB RAM", procesador: "Snapdragon 7s Gen 4", pantalla: "6.78\" AMOLED, 144Hz", bateria: "6500 mAh, 90W", precio: "$1.687.000 COP" },
+  { categoria: "celulares", marca: "Infinix", modelo: "Hot 60 Pro", imagen: "imagenes/infinix-hot-60-pro.jpg",
+    camara: "Única, 50MP", camaraFrontal: "13MP", almacenamiento: "256GB",
+    ram: "16GB RAM", procesador: "MediaTek Helio G200", pantalla: "6.78\" AMOLED, 144Hz", bateria: "5160 mAh, 45W", precio: "Precio pendiente" },
 
   // ---------- Oppo ----------
   { categoria: "celulares", marca: "Oppo", modelo: "A5x", imagen: "imagenes/oppo-a5x.jpg",
@@ -116,82 +183,16 @@ const PRODUCTOS = [
     camara: "Dual, 108MP + 5MP", camaraFrontal: "16MP", almacenamiento: "512GB",
     ram: "8GB RAM", procesador: "Snapdragon 6 Gen 4", pantalla: "6.79\" AMOLED, 120Hz", bateria: "7500 mAh, 66W", precio: "$1.155.000 COP" },
 
+  // ---------- ZTE ----------
+  { categoria: "celulares", marca: "ZTE", modelo: "Blade A35e", imagen: "imagenes/zte-blade-a35e.jpg",
+    camara: "Única, 8MP", camaraFrontal: "5MP", almacenamiento: "64GB",
+    ram: "2GB RAM", procesador: "Unisoc SC9863A", pantalla: "6.52\", 90Hz", bateria: "5000 mAh", precio: "$290.000 COP" },
+
   // ---------- Itel ----------
   { categoria: "celulares", marca: "Itel", modelo: "A100C", imagen: "imagenes/itel-a100c.jpg",
     camara: "Única, 8MP", camaraFrontal: "5MP", almacenamiento: "64GB",
     ram: "3GB RAM", procesador: "Unisoc T7100", pantalla: "6.6\" IPS, 90Hz", bateria: "5000 mAh", precio: "Precio pendiente" },
 
-  // ---------- Infinix ----------
-  { categoria: "celulares", marca: "Infinix", modelo: "Note 60 Pro 5G", imagen: "imagenes/infinix-note-60-pro-5g.jpg",
-    camara: "Dual, 50MP + 8MP, OIS", camaraFrontal: "13MP", almacenamiento: "256GB",
-    ram: "8GB RAM", procesador: "Snapdragon 7s Gen 4", pantalla: "6.78\" AMOLED, 144Hz", bateria: "6500 mAh, 90W", precio: "$1.687.000 COP" },
-  { categoria: "celulares", marca: "Infinix", modelo: "Hot 60 Pro", imagen: "imagenes/infinix-hot-60-pro.jpg",
-    camara: "Única, 50MP", camaraFrontal: "13MP", almacenamiento: "256GB",
-    ram: "16GB RAM", procesador: "MediaTek Helio G200", pantalla: "6.78\" AMOLED, 144Hz", bateria: "5160 mAh, 45W", precio: "Precio pendiente" },
-
-  // ---------- Apple ----------
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 12", imagen: "imagenes/iphone-12.jpg",
-    camara: "Doble, 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
-    ram: "4GB RAM", procesador: "Apple A14 Bionic", pantalla: "6.1\" OLED", bateria: "2815 mAh", precio: "Precio pendiente",
-    cuotaInicial: "$310.000 no reportado / $465.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 13", imagen: "imagenes/iphone-13.jpg",
-    camara: "Doble, 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
-    ram: "4GB RAM", procesador: "Apple A15 Bionic", pantalla: "6.1\" OLED", bateria: "3240 mAh", precio: "$1.350.000 COP",
-    cuotaInicial: "$370.000 no reportado / $555.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 13 (Nuevo)", imagen: "imagenes/iphone-13.jpg",
-    camara: "Doble, 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
-    ram: "4GB RAM", procesador: "Apple A15 Bionic", pantalla: "6.1\" OLED", bateria: "3240 mAh", precio: "Precio pendiente",
-    cuotaInicial: "$440.000 no reportado / $660.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 13 Pro Max", imagen: "imagenes/iphone-13-pro-max.jpg",
-    camara: "Triple, 12MP + 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
-    ram: "6GB RAM", procesador: "Apple A15 Bionic", pantalla: "6.7\" OLED, 120Hz ProMotion", bateria: "4352 mAh", precio: "Precio pendiente",
-    cuotaInicial: "$500.000 no reportado / $750.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 13 Pro Max", imagen: "imagenes/iphone-13-pro-max.jpg",
-    camara: "Triple, 12MP + 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "256GB",
-    ram: "6GB RAM", procesador: "Apple A15 Bionic", pantalla: "6.7\" OLED, 120Hz ProMotion", bateria: "4352 mAh", precio: "$2.300.000 COP",
-    cuotaInicial: "$540.000 no reportado / $810.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 14 Pro Max (Nuevo)", imagen: "imagenes/iphone-14-pro-max.jpg",
-    camara: "Triple, 48MP + 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
-    ram: "6GB RAM", procesador: "Apple A16 Bionic", pantalla: "6.7\" OLED, 120Hz ProMotion", bateria: "4323 mAh", precio: "$2.950.000 COP",
-    cuotaInicial: "$700.000 no reportado / $1.050.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 15", imagen: "imagenes/iphone-15.jpg",
-    camara: "Doble, 48MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
-    ram: "6GB RAM", procesador: "Apple A16 Bionic", pantalla: "6.1\" OLED", bateria: "3349 mAh", precio: "$1.950.000 COP",
-    cuotaInicial: "$490.000 no reportado / $735.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 15 Pro", imagen: "imagenes/iphone-15-pro.jpg",
-    camara: "Triple, 48MP + 12MP + 12MP", camaraFrontal: "12MP", almacenamiento: "256GB",
-    ram: "8GB RAM", procesador: "Apple A17 Pro", pantalla: "6.1\" OLED, 120Hz ProMotion", bateria: "3274 mAh", precio: "Precio pendiente",
-    cuotaInicial: "$610.000 no reportado / $915.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 15 Pro Max", imagen: "imagenes/iphone-15-pro-max.jpg",
-    camara: "Triple, 48MP + 12MP + 12MP (zoom óptico 5x)", camaraFrontal: "12MP", almacenamiento: "256GB",
-    ram: "8GB RAM", procesador: "Apple A17 Pro", pantalla: "6.7\" OLED, 120Hz ProMotion", bateria: "4441 mAh", precio: "$2.720.000 COP",
-    cuotaInicial: "$720.000 no reportado / $1.080.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 15 Pro Max", imagen: "imagenes/iphone-15-pro-max.jpg",
-    camara: "Triple, 48MP + 12MP + 12MP (zoom óptico 5x)", camaraFrontal: "12MP", almacenamiento: "512GB",
-    ram: "8GB RAM", procesador: "Apple A17 Pro", pantalla: "6.7\" OLED, 120Hz ProMotion", bateria: "4441 mAh", precio: "Precio pendiente" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 16 (Nuevo)", imagen: "imagenes/iphone-16.jpg",
-    camara: "Doble, 48MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
-    ram: "8GB RAM", procesador: "Apple A18", pantalla: "6.1\" OLED", bateria: "3561 mAh", precio: "Precio pendiente",
-    cuotaInicial: "$720.000 no reportado / $1.080.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 16", imagen: "imagenes/iphone-16.jpg",
-    camara: "Doble, 48MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
-    ram: "8GB RAM", procesador: "Apple A18", pantalla: "6.1\" OLED", bateria: "3561 mAh", precio: "$2.450.000 COP",
-    cuotaInicial: "$650.000 no reportado / $975.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 16 Pro", imagen: "imagenes/iphone-16-pro.jpg",
-    camara: "Triple, 48MP + 48MP + 12MP", camaraFrontal: "12MP", almacenamiento: "128GB",
-    ram: "8GB RAM", procesador: "Apple A18 Pro", pantalla: "6.3\" OLED, 120Hz ProMotion", bateria: "3582 mAh", precio: "Precio pendiente",
-    cuotaInicial: "$730.000 no reportado / $1.095.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 16 Pro Max", imagen: "imagenes/iphone-16-pro-max.jpg",
-    camara: "Triple, 48MP + 48MP + 12MP", camaraFrontal: "12MP", almacenamiento: "256GB",
-    ram: "8GB RAM", procesador: "Apple A18 Pro", pantalla: "6.9\" OLED, 120Hz ProMotion", bateria: "4685 mAh", precio: "$3.480.000 COP",
-    cuotaInicial: "$960.000 no reportado / $1.440.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 17", imagen: "imagenes/iphone-17.jpg",
-    camara: "Doble, 48MP + 48MP", camaraFrontal: "18MP", almacenamiento: "256GB",
-    ram: "8GB RAM", procesador: "Apple A19", pantalla: "6.3\" OLED, 120Hz ProMotion", bateria: "3692 mAh", precio: "$3.100.000 COP",
-    cuotaInicial: "$910.000 no reportado / $1.365.000 reportado" },
-  { categoria: "celulares", marca: "iPhone", modelo: "iPhone 17 Pro Max", imagen: "imagenes/iphone-17-pro-max.jpg",
-    camara: "Triple, 48MP + 48MP + 12MP", camaraFrontal: "18MP", almacenamiento: "256GB",
-    ram: "12GB RAM", procesador: "Apple A19 Pro", pantalla: "6.9\" OLED, 120Hz ProMotion", bateria: "5088 mAh", precio: "Precio pendiente" },
 
   /* ---------- Accesorios y Electrodomésticos ----------
      Todavía no hay productos cargados en estas categorías.
@@ -343,11 +344,23 @@ contenedorGrid.addEventListener("keydown", (e) => {
   alternarPrecioTarjeta(tarjeta);
 });
 
+/* Orden fijo en el que deben aparecer las marcas en el filtro (de izquierda a
+   derecha), independiente del orden en que estén cargadas en PRODUCTOS.
+   Una marca que no esté en esta lista simplemente aparece al final. */
+const ORDEN_MARCAS = ["Samsung", "iPhone", "Xiaomi", "Motorola", "Infinix", "Oppo", "Honor", "ZTE", "Itel"];
+
 /* Genera las píldoras de marca según los productos de la categoría activa.
    Si la categoría no tiene productos todavía, se oculta esta fila completa. */
 function renderizarMarcas() {
   const productosCategoria = PRODUCTOS.filter(p => p.categoria === categoriaActiva);
-  const marcas = [...new Set(productosCategoria.map(p => p.marca))];
+  const marcas = [...new Set(productosCategoria.map(p => p.marca))].sort((a, b) => {
+    const posA = ORDEN_MARCAS.indexOf(a);
+    const posB = ORDEN_MARCAS.indexOf(b);
+    if (posA === -1 && posB === -1) return a.localeCompare(b); // marcas nuevas: alfabético
+    if (posA === -1) return 1;  // marcas no listadas van al final
+    if (posB === -1) return -1;
+    return posA - posB;
+  });
 
   if (marcas.length === 0) {
     menuMarcasEl.hidden = true;
